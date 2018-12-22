@@ -14,11 +14,16 @@ namespace Poker
         {
             Number = random.Next(2, 15);
             Suit = random.Next(1, 5);
-
+            Name = numberArray[Number - 2] + suitArray[Suit - 1];
         }
 
         public readonly int Number;
         public readonly int Suit;
-        public readonly int Name;
+        public readonly string Name;
+
+        private static string[] numberArray = { };
+        private static string[] suitArray = { };
+        private static string numberString = "";
+        private static string suitString = "";
     }
 }
