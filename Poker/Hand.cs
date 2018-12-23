@@ -10,6 +10,8 @@ namespace Poker
 
     public class Hand
     {
+        private int score;
+
         public Hand()
         {
 
@@ -29,5 +31,32 @@ namespace Poker
         {
 
         }
+
+        public int Score
+        {
+            get
+            {
+                if (score == 0)
+                {
+                    CalcScore();
+                }
+                return score;
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                return titles[Score];
+            }
+        }
+
+        private void CalcScore()
+        {
+            throw new NotImplementedException();
+        }
+
+        static string[] titles = { };
     }
 }
