@@ -57,6 +57,13 @@ namespace Poker
             throw new NotImplementedException();
         }
 
-        static string[] titles = { };
+        Card[] cards = new Card[5];
+        bool[] isHold = new bool[5];
+
+        static string[] titles =
+        {
+            "No Score",
+            ""
+        };
     }
 }
