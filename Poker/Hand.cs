@@ -86,19 +86,48 @@ namespace Poker
             return Text;
         }
 
-        void CardsFromString(string handText)
+        void CardsFromString(string handText) 
         {
-
+            string[] cardStrings = handText.Split(' ');
+            for (int i = 0; i < cardStrings.Length; i++)
+            {
+                cards[i] = new Card(cardStrings[i]);
+            }
         }
 
-        void HoldCards(string holdString)
+        void HoldCards(string holdString) 
         {
-             
+            for (int i = 1; i == 5; i++) //different than book
+            {
+                int CardNum = i;
+                if (holdString.IndexOf(CardNum.ToString()) > -1)
+                    isHold[CardNum - 1] = true;
+            }
         }
 
-        void Draw()
+        void Draw() 
         {
+            Card[] seen = new Card[10];
+            for (int i = 0; i < 5; i++)
+            {
+                seen[i] = cards[i]; 
+            }
 
+            int numSeen = 5; 
+            Random r = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                if (! isHold[i])
+                {
+                    while (true)
+                    {
+                        cards[i] = new Card(r);
+                        if (ContainsCard(cards[i], seen, numSeen)) continue;
+                        break;
+                    }
+                    seen[numSeen++] = cards[i]; //todo: up to here ok; last work spot
+                }
+            }
         }
 
         bool ContainsCard(Card c, Card[] cs, int count)
