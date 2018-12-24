@@ -154,8 +154,54 @@ namespace Poker
                 }
             }
 
+            // sort card values...
+            int[] sortedValues = new int[5];
+            for (int i = 0; i < 5; i++)
+                sortedValues[i] = cards[i].Number;
+            Array.Sort(sortedValues);
+
+
+            //do we have straight?
+            bool isStraight = true;
+            for (int i = 0; i < 4; i++)
+            {
+                if (sortedValues[i] + 1 == sortedValues[i + 1])
+                {
+                    isStraight = false;
+                    break;
+                }
+            }
+
+            //is it a straight to the ace?
+            bool isTopStraight = (isStraight && sortedValues[4] == 14);
+
+            //maybe it is a straight from the ace (i.e. A, 2, 3, 4, 5)
+            if (!isStraight)
+            {
+                if (sortedValues[0] == 2 && sortedValues[1] == 3 && sortedValues[2] == 4 && sortedValues[3] == 5 && sortedValues[4] == 14)
+                    isStraight = true;
+            }
+
+            //now calculate score
+
+            //royal flush
+            if (isTopStraight && isFlush)
+            {
+                score = 10;
+                return;
+            }
+
+            //straight flush
+            if (isStraight && isFlush)
+            {
+                score = 9;
+                return;
+            }
+
             //todo: up to here
+
         }
+
 
         Card[] cards = new Card[5];
         bool[] isHold = new bool[5];
