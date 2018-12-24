@@ -12,29 +12,43 @@ namespace Poker
     {
         public Hand()
         {
-
+            var r = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                while (true)
+                {
+                    cards[i] = new Card(r);
+                    if (ContainsCard(cards[i], cards, i))
+                        continue;
+                    break;
+                }
+            }
         }
-
+    
         public Hand(string handText)
         {
-
+            CardsFromString(handText);
         }
 
         public Hand(string handText, string holdString)
         {
-
+            CardsFromString(handText);
+            HoldCards(holdString);
+            Draw();
         }
 
         public Hand(Hand hand, string holdString)
         {
-
+            cards = hand.cards;
+            HoldCards(holdString);
+            Draw();
         }
 
         public int Score
         {
             get
             {
-                if (score == 0)
+                if (score < 0)
                 {
                     CalcScore();
                 }

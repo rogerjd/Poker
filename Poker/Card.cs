@@ -35,7 +35,7 @@ namespace Poker
         {
             if (obj is Card c)
             {
-                return (c.Number == Number) && (c.Suit == Suit);
+                return (c.Number == Number) && (c.Suit == Suit);  //name?
             }
             else
             {
