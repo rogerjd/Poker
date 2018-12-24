@@ -125,19 +125,36 @@ namespace Poker
                         if (ContainsCard(cards[i], seen, numSeen)) continue;
                         break;
                     }
-                    seen[numSeen++] = cards[i]; //todo: up to here ok; last work spot
+                    seen[numSeen++] = cards[i];
                 }
             }
         }
 
         bool ContainsCard(Card c, Card[] cs, int count)
         {
+            for (int i = 0; i < count; i++)
+            {
+                if (c.Equals(cs[i]))
+                    return true;
+            }
             return false;
         }
 
         void CalcScore()
         {
-            throw new NotImplementedException();
+            //are cards all of the same suit? 
+            bool isFlush = true;
+            int s = cards[0].Suit;
+            for (int i = 1; i < 5; i++)
+            {
+                if (s != cards[i].Suit)
+                {
+                    isFlush = false;
+                    break;
+                }
+            }
+
+            //todo: up to here
         }
 
         Card[] cards = new Card[5];
