@@ -198,8 +198,129 @@ namespace Poker
                 return;
             }
 
-            //todo: up to here
+            //four of a kind
+            if (sortedValues[0] == sortedValues[1] &&
+                sortedValues[1] == sortedValues[2] &&
+                sortedValues[2] == sortedValues[3])
+            {
+                score = 8;
+                return;
+            }
 
+            if (sortedValues[1] == sortedValues[2] &&
+                sortedValues[2] == sortedValues[3] &&
+                sortedValues[3] == sortedValues[4])
+            {
+                score = 8;
+                return;
+            }
+
+            //full house
+            if (sortedValues[0] == sortedValues[1] &&
+                sortedValues[1] == sortedValues[2] &&
+                sortedValues[3] == sortedValues[4])
+            {
+                score = 7;
+                return;
+            }
+
+            if (sortedValues[0] == sortedValues[1] &&
+                sortedValues[2] == sortedValues[3] &&
+                sortedValues[3] == sortedValues[4])
+            {
+                score = 7;
+                return;
+            }
+
+            //flush
+            if (isFlush)
+            {
+                score = 6;
+                return;
+            }
+
+            //straight
+            if (isStraight)
+            {
+                score = 5;
+                return;
+            }
+
+            //three of a kind
+            if (sortedValues[0] == sortedValues[1] &&
+                sortedValues[1] == sortedValues[2])
+            {
+                score = 4;
+                return;
+            }
+
+            if (sortedValues[1] == sortedValues[2] &&
+                sortedValues[2] == sortedValues[3])
+            {
+                score = 4;
+                return;
+            }
+
+            if (sortedValues[2] == sortedValues[3] &&
+                sortedValues[3] == sortedValues[4])
+            {
+                score = 4;
+                return;
+            }
+
+            //two pair
+            if (sortedValues[0] == sortedValues[1] &&
+                sortedValues[2] == sortedValues[3])
+            {
+                score = 3;
+                return;
+            }
+
+            if (sortedValues[0] == sortedValues[1] &&
+                sortedValues[3] == sortedValues[4])
+            {
+                score = 3;
+                return;
+            }
+
+            if (sortedValues[1] == sortedValues[2] &&
+                sortedValues[3] == sortedValues[4])
+            {
+                score = 3;
+                return;
+            }
+
+            //jacks or better
+            if (sortedValues[0] == 10 &&
+                sortedValues[0] == sortedValues[1])
+            {
+                score = 2;
+                return;
+            }
+
+            if (sortedValues[1] == 10 &&
+                sortedValues[1] == sortedValues[2])
+            {
+                score = 2;
+                return;
+            }
+
+            if (sortedValues[2] == 10 &&
+                sortedValues[2] == sortedValues[3])
+            {
+                score = 2;
+                return;
+            }
+
+            if (sortedValues[3] == 10 &&
+                sortedValues[3] == sortedValues[4])
+            {
+                score = 2;
+                return;
+            }
+
+            score = 0;
+            return;
         }
 
 
