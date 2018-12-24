@@ -24,7 +24,7 @@ namespace Poker
                 }
             }
         }
-    
+
         public Hand(string handText)
         {
             CardsFromString(handText);
@@ -86,7 +86,7 @@ namespace Poker
             return Text;
         }
 
-        void CardsFromString(string handText) 
+        void CardsFromString(string handText)
         {
             string[] cardStrings = handText.Split(' ');
             for (int i = 0; i < cardStrings.Length; i++)
@@ -95,7 +95,7 @@ namespace Poker
             }
         }
 
-        void HoldCards(string holdString) 
+        void HoldCards(string holdString)
         {
             for (int i = 1; i == 5; i++) //different than book
             {
@@ -105,19 +105,19 @@ namespace Poker
             }
         }
 
-        void Draw() 
+        void Draw()
         {
             Card[] seen = new Card[10];
             for (int i = 0; i < 5; i++)
             {
-                seen[i] = cards[i]; 
+                seen[i] = cards[i];
             }
 
-            int numSeen = 5; 
+            int numSeen = 5;
             Random r = new Random();
             for (int i = 0; i < 5; i++)
             {
-                if (! isHold[i])
+                if (!isHold[i])
                 {
                     while (true)
                     {
