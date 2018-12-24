@@ -10,8 +10,6 @@ namespace Poker
 
     public class Hand
     {
-        private int score;
-
         public Hand()
         {
 
@@ -52,7 +50,49 @@ namespace Poker
             }
         }
 
-        private void CalcScore()
+        public string CardName(int cardNum)
+        {
+            return cards[cardNum - 1].Name;
+        }
+
+        public string Text
+        {
+            get
+            {
+                return CardName(1) + " " +
+                       CardName(2) + " " +
+                       CardName(3) + " " +
+                       CardName(4) + " " +
+                       CardName(5);
+            }
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
+
+        void CardsFromString(string handText)
+        {
+
+        }
+
+        void HoldCards(string holdString)
+        {
+             
+        }
+
+        void Draw()
+        {
+
+        }
+
+        bool ContainsCard(Card c, Card[] cs, int count)
+        {
+            return false;
+        }
+
+        void CalcScore()
         {
             throw new NotImplementedException();
         }
@@ -63,7 +103,18 @@ namespace Poker
         static string[] titles =
         {
             "No Score",
-            ""
+            "",
+            "Jacks or Better",
+            "Two Pair",
+            "Three Pair",
+            "Straight",
+            "Flush",
+            "Full House",
+            "Four of a Kind",
+            "Straigbt Flush",
+            "Royal Flush"
         };
+
+        int score = -1;
     }
 }
