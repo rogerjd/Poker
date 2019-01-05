@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Poker
 {
+    //todo: 3 of a kind, coming up as straight
     public class SimpleMachine
     {
         public Hand Deal()

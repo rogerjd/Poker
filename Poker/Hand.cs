@@ -97,10 +97,10 @@ namespace Poker
 
         void HoldCards(string holdString)
         {
-            for (int i = 1; i == 5; i++) //different than book
+            for (int i = 0; i < 6; i++) //different than book
             {
-                int CardNum = i;
-                if (holdString.IndexOf(CardNum.ToString()) > -1)
+                int CardNum = i + 1;
+                if (holdString.IndexOf(CardNum.ToString()) >= 0)
                     isHold[CardNum - 1] = true;
             }
         }
