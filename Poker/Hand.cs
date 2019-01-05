@@ -165,7 +165,7 @@ namespace Poker
             bool isStraight = true;
             for (int i = 0; i < 4; i++)
             {
-                if (sortedValues[i] + 1 == sortedValues[i + 1])
+                if (sortedValues[i] + 1 != sortedValues[i + 1])
                 {
                     isStraight = false;
                     break;
