@@ -40,7 +40,6 @@ namespace SimPok
                 Console.WriteLine(drawHand.Text);
                 Console.WriteLine(drawHand.Title);
                 Console.WriteLine($"Score = {drawHand.Score}\n");
-
             }
         }
     }

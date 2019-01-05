@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker", "Poker\Poker.csproj", "{82F650C1-7EC3-4D49-B097-D58B68B611F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokerTests", "..\UnitTestProject1\UnitTestProject1\PokerTests.csproj", "{E43E0A2F-A4BD-489F-BADE-356AEC1AB41E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokerTests", "PokerTests\PokerTests.csproj", "{E43E0A2F-A4BD-489F-BADE-356AEC1AB41E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimPok", "SimPok\SimPok.csproj", "{12F7FA93-BA41-4D27-9B13-AD7EB49ABF1C}"
 EndProject
