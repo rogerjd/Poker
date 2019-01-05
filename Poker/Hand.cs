@@ -291,28 +291,28 @@ namespace Poker
             }
 
             //jacks or better
-            if (sortedValues[0] == 10 &&
+            if (sortedValues[0] > 10 &&
                 sortedValues[0] == sortedValues[1])
             {
                 score = 2;
                 return;
             }
 
-            if (sortedValues[1] == 10 &&
+            if (sortedValues[1] > 10 &&
                 sortedValues[1] == sortedValues[2])
             {
                 score = 2;
                 return;
             }
 
-            if (sortedValues[2] == 10 &&
+            if (sortedValues[2] > 10 &&
                 sortedValues[2] == sortedValues[3])
             {
                 score = 2;
                 return;
             }
 
-            if (sortedValues[3] == 10 &&
+            if (sortedValues[3] > 10 &&
                 sortedValues[3] == sortedValues[4])
             {
                 score = 2;
