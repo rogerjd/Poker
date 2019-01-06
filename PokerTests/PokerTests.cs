@@ -17,6 +17,25 @@ namespace PokerTests
         }
 
         [TestMethod]
+        public void TwoPair()
+        {
+            Hand h = new Hand("3C 3S 4H 4D JD");
+            Assert.AreEqual(h.Score, 3);
+            Assert.AreEqual(h.Title, "Two Pair");
+            Assert.AreEqual(h.Text, "3C 3S 4H 4D JD");
+
+            h = new Hand("3C 3S 5H 4D 4S");
+            Assert.AreEqual(h.Score, 3);
+            Assert.AreEqual(h.Title, "Two Pair");
+            Assert.AreEqual(h.Text, "3C 3S 5H 4D 4S");
+
+            h = new Hand("2C 3S 3H 4D 4S");
+            Assert.AreEqual(h.Score, 3);
+            Assert.AreEqual(h.Title, "Two Pair");
+            Assert.AreEqual(h.Text, "2C 3S 3H 4D 4S");
+        }
+
+        [TestMethod]
         public void JacksOrBetter()
         {
             Hand h = new Hand("JH JD 2H 6C KS");
