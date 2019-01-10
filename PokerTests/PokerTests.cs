@@ -18,7 +18,10 @@ namespace PokerTests
         [TestMethod]
         public void StraightFlush()
         {
-
+            Hand h = new Hand("3C 4C 5C 6C 7C");
+            Assert.AreEqual(h.Score, 9);
+            Assert.AreEqual(h.Title, "Straight Flush");
+            Assert.AreEqual(h.Text, "3C 4C 5C 6C 7C");
         }
 
         [TestMethod]

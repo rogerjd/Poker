@@ -338,7 +338,7 @@ namespace Poker
             "Flush",
             "Full House",
             "Four of a Kind",
-            "Straigbt Flush",
+            "Straight Flush",
             "Royal Flush"
         };
 
