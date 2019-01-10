@@ -25,6 +25,11 @@ namespace PokerTests
             Assert.AreEqual(h.Score, 9);
             Assert.AreEqual(h.Title, "Straight Flush");
             Assert.AreEqual(h.Text, "3C 4C 5C 6C 7C");
+
+            h = new Hand("AC 2C 3C 4C 5C");
+            Assert.AreEqual(h.Score, 9);
+            Assert.AreEqual(h.Title, "Straight Flush");
+            Assert.AreEqual(h.Text, "AC 2C 3C 4C 5C");
         }
 
         [TestMethod]
@@ -78,18 +83,18 @@ namespace PokerTests
         {
             Hand h = new Hand("3C 3S 3H 4D JD");
             Assert.AreEqual(h.Score, 4);
-            Assert.AreEqual(h.Title, "Three Pair");
+            Assert.AreEqual(h.Title, "Three of a Kind");
             Assert.AreEqual(h.Text, "3C 3S 3H 4D JD");
 
-            h = new Hand("4C 3S 3H 3D JD");
+            h = new Hand("4C 5S 5H 5D JD");
             Assert.AreEqual(h.Score, 4);
-            Assert.AreEqual(h.Title, "Three Pair");
-            Assert.AreEqual(h.Text, "4C 3S 3H 3D JD");
+            Assert.AreEqual(h.Title, "Three of a Kind");
+            Assert.AreEqual(h.Text, "4C 5S 5H 5D JD");
 
-            h = new Hand("2C 5S 3H 3D 3S");
+            h = new Hand("2C 5S 6H 6D 6S");
             Assert.AreEqual(h.Score, 4);
-            Assert.AreEqual(h.Title, "Three Pair");
-            Assert.AreEqual(h.Text, "2C 5S 3H 3D 3S");
+            Assert.AreEqual(h.Title, "Three of a Kind");
+            Assert.AreEqual(h.Text, "2C 5S 6H 6D 6S");
         }
 
         [TestMethod]
@@ -100,10 +105,10 @@ namespace PokerTests
             Assert.AreEqual(h.Title, "Two Pair");
             Assert.AreEqual(h.Text, "3C 3S 4H 4D JD");
 
-            h = new Hand("3C 3S 5H 4D 4S");
+            h = new Hand("3C 3S 5H 7D 7S");
             Assert.AreEqual(h.Score, 3);
             Assert.AreEqual(h.Title, "Two Pair");
-            Assert.AreEqual(h.Text, "3C 3S 5H 4D 4S");
+            Assert.AreEqual(h.Text, "3C 3S 5H 7D 7S");
 
             h = new Hand("2C 3S 3H 4D 4S");
             Assert.AreEqual(h.Score, 3);
@@ -114,10 +119,26 @@ namespace PokerTests
         [TestMethod]
         public void JacksOrBetter()
         {
-            Hand h = new Hand("JH JD 2H 6C KS");
+            Hand h = new Hand("JH JD KH QC AS");
             Assert.AreEqual(h.Score, 2);
             Assert.AreEqual(h.Title, "Jacks or Better");
-            Assert.AreEqual(h.Text, "JH JD 2H 6C KS");
+            Assert.AreEqual(h.Text, "JH JD KH QC AS");
+
+            h = new Hand("2C QD QH KC AS");
+            Assert.AreEqual(h.Score, 2);
+            Assert.AreEqual(h.Title, "Jacks or Better");
+            Assert.AreEqual(h.Text, "2C QD QH KC AS");
+
+            h = new Hand("4H 7D KH KC AS");
+            Assert.AreEqual(h.Score, 2);
+            Assert.AreEqual(h.Title, "Jacks or Better");
+            Assert.AreEqual(h.Text, "4H 7D KH KC AS");
+
+            h = new Hand("5H 7D 9H JC JS");
+            Assert.AreEqual(h.Score, 2);
+            Assert.AreEqual(h.Title, "Jacks or Better");
+            Assert.AreEqual(h.Text, "5H 7D 9H JC JS");
+
         }
 
         [TestMethod]

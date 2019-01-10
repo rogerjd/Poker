@@ -333,7 +333,7 @@ namespace Poker
             "",
             "Jacks or Better",
             "Two Pair",
-            "Three Pair",
+            "Three of a Kind",
             "Straight",
             "Flush",
             "Full House",
