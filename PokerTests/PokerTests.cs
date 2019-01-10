@@ -11,7 +11,10 @@ namespace PokerTests
         [TestMethod]
         public void RoyalFlush()
         {
-
+            Hand h = new Hand("TC JC QC KC AC");
+            Assert.AreEqual(h.Score, 10);
+            Assert.AreEqual(h.Title, "Royal Flush");
+            Assert.AreEqual(h.Text, "TC JC QC KC AC");
         }
 
         //straight flush
