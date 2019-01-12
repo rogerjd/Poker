@@ -138,7 +138,6 @@ namespace PokerTests
             Assert.AreEqual(h.Score, 2);
             Assert.AreEqual(h.Title, "Jacks or Better");
             Assert.AreEqual(h.Text, "5H 7D 9H JC JS");
-
         }
 
         [TestMethod]

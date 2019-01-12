@@ -1,0 +1,1 @@
+﻿sqlcmd -S (localdb)\MSSQLLocalDB -i pokdb.sql
