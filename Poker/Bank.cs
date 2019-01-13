@@ -12,11 +12,12 @@ namespace Poker
     public class Bank
     {
         private string connectString;
+        string status;
 
-        public int TakenIn { get; }
-        public int TakenOut { get; }
-        public int Profit{ get; }
-        public int TargetMargin { get; }
+        public int TakenIn { get { return takenIn; } }
+        public int PaidOut { get { return paidOut; } }
+        public int Profit { get { return Profit; } }
+        public readonly int TargetMargin;
 
         public Bank()
         {
@@ -29,8 +30,28 @@ namespace Poker
         {
             if (connectString == "")
                 return;
+            string sql = "select" +
+                            "sum(bet) as taken_in " +
+                            "sum(score * bet) as paid_out " +
+                            "sum(bet) - sum(score * bet) as profit " +
+                            "from games";
+            SqlDataAdapter sda = new SqlDataAdapter(sql, connectString);
+            try
+            {
+                sda = new SqlDataAdapter(sql, connectString);
+                DataSet ds = new DataSet("PokerProfit");
+                sda.Fill(ds, "stats");
+                DataRow dr = ds.Tables[0].Rows[0];
+                takenIn = (int)dr[0];
+                paidOut = (int)dr[1];
+                profit = (int)dr[2];
+                status = "Machine Stats all (All Players)";
+            }
+            catch (Exception e)
+            {
+                new MsgLog($"Bank.Refresh() : {e.Message}");
+            }
         }
-
 
         private int GetParm(string parmName, int defaultValue)
         {
@@ -63,5 +84,9 @@ namespace Poker
                 connectString = @"server=(localdb)\MSSQLLocalDB;database=poker";
             }
         }
+
+        int takenIn = 0;
+        int paidOut = 0;
+        int profit = 0;
     }
 }
