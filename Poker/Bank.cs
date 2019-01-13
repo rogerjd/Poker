@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Poker
 {
@@ -24,6 +21,74 @@ namespace Poker
             SetConnectString();
             TargetMargin = GetParm("TargetMargin", 25);
             Refresh();
+        }
+
+        public double HouseMargin
+        {
+            get
+            {
+                if (TakenIn == 0)
+                {
+                    return TargetMargin;
+                }
+                return (double)profit * 100 / takenIn;
+            }
+        }
+
+        public double Delta
+        {
+            get
+            {
+                return HouseMargin - TargetMargin;
+            }
+        }
+
+        public int Bias
+        {
+            get
+            {
+                if (Delta == 0)
+                    return 0;
+                int bias = (int)Math.Round(Math.Abs(Delta));
+                if (bias > 10)
+                    return 10;
+                return bias;
+            }
+        }
+
+        public string Status
+        {
+            get
+            {
+                return status;
+            }
+        }
+
+        public string Text
+        {
+            get
+            {
+                return "\n" +
+                    status + "\n" +
+                    "========================================\n" +
+                    "Taken In:              : " + takenIn + "\n" +
+                    "Paid Out               : " + paidOut + "\n" +
+                    "Profit                 : " + profit + "\n" +
+                    "House Margin %         : " + string.Format("0:00.00", HouseMargin) + "\n" +
+                    "Target Margin %        : " + string.Format("0:00.00", TargetMargin) + "\n" +
+                    "Delta                  : " + string.Format("0:00.00", Delta) + "\n" +
+                    "Bias                   : " + Bias + "\n";
+            }
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
+
+        public void SaveGame(string Hand, int score, int bet) //todo: up to here
+        {
+
         }
 
         private void Refresh()
