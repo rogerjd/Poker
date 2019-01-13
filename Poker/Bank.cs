@@ -86,9 +86,35 @@ namespace Poker
             return Text;
         }
 
-        public void SaveGame(string Hand, int score, int bet) //todo: up to here
+        public void SaveGame(string hand, int score, int bet) 
         {
+            if (connectString == "")
+                return;
 
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection(connectString);
+            }
+            catch (Exception e)
+            {
+                new MsgLog($"Bank.SaveGame() : Cannot create SQLConnection - {e.Message}");
+                return;
+            }
+
+            string sql = "INSERT into games(hand, score, bet) VALUES " +
+                "('" + hand + "', " + score + ", " + bet + ")"; 
+
+            SqlCommand cmd = null;
+            try
+            {
+                cmd = new SqlCommand(sql, conn);
+            }
+            catch (Exception e)
+            {
+                new MsgLog($"Bank.SaveGame() : Cannot create SQLCommand - {e.Message}");
+                return;
+            } //todo: up to here
         }
 
         private void Refresh()
