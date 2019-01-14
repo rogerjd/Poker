@@ -114,7 +114,34 @@ namespace Poker
             {
                 new MsgLog($"Bank.SaveGame() : Cannot create SQLCommand - {e.Message}");
                 return;
-            } //todo: up to here
+            }
+
+            try
+            {
+                conn.Open();
+            }
+            catch (Exception e)
+            {
+                new MsgLog($"Bank.SaveGame() : Cannot open SQLConnection {e.Message}");
+                return;
+            }
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                new MsgLog($"Bank.SaveGame() : Cannot execute SQLCommand {e.Message}");
+                return;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+            }
+
+            Refresh();
         }
 
         private void Refresh()
