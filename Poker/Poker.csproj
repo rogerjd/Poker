@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bank.cs" />
+    <Compile Include="Bet.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="Machine.cs" />
